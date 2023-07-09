@@ -2,7 +2,6 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import express, { NextFunction, Request, Response, response } from 'express';
 import cors from 'cors';
-import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import validateEnv from './utils/validateEnv';
 import { PrismaClient } from '@prisma/client';
@@ -36,9 +35,6 @@ async function bootstrap() {
     // })
     cors()
   );
-
-  // 3. Logger
-  if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
   // ROUTES
   app.use('/auth', authRouter);
